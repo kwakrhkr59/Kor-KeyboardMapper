@@ -1,6 +1,6 @@
 # 🔄 Hangul ↔ QWERTY Converter (Chrome Extension)
 
-A simple yet powerful Chrome Extension that restores text typed in the wrong keyboard layout. Whether you accidentally typed Korean on an English keyboard (`dkssud`) or English on a Korean keyboard (`ㅗㄷlld`), this tool fixes it instantly.
+A simple yet powerful Chrome Extension that restores text typed in the wrong keyboard layout. Whether you accidentally typed Korean on an English keyboard (`dkssud`) or English on a Korean keyboard (`ㅗ디ㅣㅐ`), this tool fixes it instantly.
 
 ## ✨ Key Features
 
