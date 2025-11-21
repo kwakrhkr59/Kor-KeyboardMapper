@@ -41,7 +41,16 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 chrome.commands.onCommand.addListener(async (command) => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab) return;
+  if (
+    !tab ||
+    !tab.url ||
+    tab.url.startsWith("chrome://") ||
+    tab.url.startsWith("edge://") ||
+    tab.url.startsWith("about:")
+  ) {
+    console.warn("이 페이지에서는 확장 프로그램을 사용할 수 없습니다.");
+    return;
+  }
 
   const result = await chrome.scripting.executeScript({
     target: { tabId: tab.id },
@@ -93,17 +102,14 @@ function replaceSelectedText(replacementText) {
   ) {
     const start = activeElement.selectionStart;
     const end = activeElement.selectionEnd;
-
     const originalText = activeElement.value;
     activeElement.value =
       originalText.slice(0, start) + replacementText + originalText.slice(end);
-
     activeElement.selectionStart = activeElement.selectionEnd =
       start + replacementText.length;
   } else {
     const selection = window.getSelection();
     if (!selection.rangeCount) return;
-
     const range = selection.getRangeAt(0);
     range.deleteContents();
     range.insertNode(document.createTextNode(replacementText));

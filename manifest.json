@@ -17,21 +17,21 @@
   "commands": {
     "cmd_toggle": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Q",
+        "default": "Alt+Q",
         "mac": "Command+Shift+Q"
       },
       "description": "선택 텍스트 교차 변환"
     },
     "cmd_to_kor": {
       "suggested_key": {
-        "default": "Ctrl+Shift+W",
+        "default": "Alt+W",
         "mac": "Command+Shift+W"
       },
       "description": "🇰🇷 영 → 한 변환"
     },
     "cmd_to_eng": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
+        "default": "Alt+E",
         "mac": "Command+Shift+E"
       },
       "description": "🇺🇸 한 → 영 변환"
