@@ -6,10 +6,10 @@ A simple yet powerful Chrome Extension that restores text typed in the wrong key
 
 - **🇰🇷 English → Korean (`dkssud` → `안녕`)**
   - Converts QWERTY keyboard input into Hangul characters.
-- **🇺🇸 Korean → English (`ㅗㄷlld` → `hello`)**
+- **🇺🇸 Korean → English (`ㅗ디ㅣㅐ` → `hello`)**
   - Decodes Hangul characters back to their QWERTY key strokes.
 - **🔀 Mixed Text Toggle**
-  - Smartly swaps languages in a mixed string. Useful when you have a sentence like `dkssud하세요` (converts to `안녕gktpdy`).
+  - Smartly swaps languages in a mixed string. Useful when you have a sentence like `ㅗ디ㅣㅐ dkssud` (converts to `hello 안녕`).
 - **🖱️ Context Menu Support (Right-Click)**
   - No need to open the popup! Select text on any website, right-click, and convert it **in-place**.
 
