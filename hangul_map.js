@@ -232,6 +232,40 @@ function convertKorToEng(text) {
   return result.join("");
 }
 
+// 영↔한 교차
+function toggleLang(text) {
+  let result = "";
+  let engBuffer = "";
+
+  // 한글 여부 판단 (완성형 또는 자모)
+  function isHangulChar(char) {
+    const code = char.charCodeAt(0);
+    return (code >= 0xac00 && code <= 0xd7a3) || char in korToEng;
+  }
+
+  for (const char of text) {
+    if (isHangulChar(char)) {
+      // 1. 그동안 모아둔 영어가 있다면 한글로 변환해서 붙임
+      if (engBuffer) {
+        result += convertEngToHangul(engBuffer);
+        engBuffer = "";
+      }
+      // 2. 현재 한글 문자는 영어로 분해해서 붙임
+      result += convertKorToEng(char);
+    } else {
+      // 3. 한글이 아니면(영어, 숫자, 공백 등) 버퍼에 쌓음
+      engBuffer += char;
+    }
+  }
+
+  // 남은 버퍼 처리
+  if (engBuffer) {
+    result += convertEngToHangul(engBuffer);
+  }
+
+  return result;
+}
+
 // Eng -> Kor
 function convertEngToHangul(text) {
   const jamos = [];

@@ -8,6 +8,12 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 
   chrome.contextMenus.create({
+    id: "toggle",
+    title: "🔀 영 ↔ 한 교차 변환",
+    contexts: ["selection"],
+  });
+
+  chrome.contextMenus.create({
     id: "toEng",
     title: "🇺🇸 한 → 영 변환",
     contexts: ["selection"],

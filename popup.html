@@ -12,279 +12,210 @@
 
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        width: 320px;
-        padding: 20px;
-        background: #f8f9fa;
-        color: #212529;
-        line-height: 1.5;
+          sans-serif;
+        width: 300px;
+        padding: 16px;
+        background: #f5f5f7;
       }
 
       .container {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
       }
 
-      h3 {
+      .header {
         text-align: center;
-        margin-bottom: 24px;
-        color: #212529;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: -0.3px;
+        margin-bottom: 20px;
       }
 
-      .input-group {
-        margin-bottom: 16px;
+      .header h3 {
+        color: #1d1d1f;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .header p {
+        color: #86868b;
+        font-size: 12px;
+        margin-top: 4px;
       }
 
       textarea {
         width: 100%;
-        height: 90px;
+        height: 80px;
         padding: 14px;
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
+        border: 1px solid #e5e5e7;
+        border-radius: 12px;
         font-size: 14px;
         font-family: inherit;
         resize: none;
-        transition: border-color 0.2s ease;
-        background: #ffffff;
-        color: #212529;
+        transition: all 0.2s ease;
+        background: #fafafa;
+        color: #1d1d1f;
       }
 
       textarea:focus {
         outline: none;
-        border-color: #495057;
+        border-color: #0071e3;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
       }
 
       textarea::placeholder {
-        color: #adb5bd;
+        color: #aeaeb2;
       }
 
       .button-group {
         display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin: 16px 0;
       }
 
       button {
-        flex: 1;
-        padding: 12px 16px;
         border: none;
-        border-radius: 8px;
-        font-size: 14px;
+        border-radius: 10px;
+        font-size: 13px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
-        background: #212529;
+      }
+
+      .btn-convert {
+        flex: 1;
+        padding: 14px 12px;
+        background: #1d1d1f;
         color: white;
       }
 
-      button:hover {
-        background: #343a40;
-        transform: translateY(-1px);
+      .btn-convert:hover {
+        background: #3a3a3c;
+      }
+
+      .btn-convert span {
+        display: block;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 2px;
+        font-weight: 400;
+      }
+
+      .btn-toggle {
+        width: 48px;
+        background: #e5e5e7;
+        color: #1d1d1f;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-toggle:hover {
+        background: #d1d1d6;
       }
 
       button:active {
-        transform: translateY(0);
-      }
-
-      #toKor {
-        background: #0d6efd;
-      }
-
-      #toKor:hover {
-        background: #0b5ed7;
-      }
-
-      #toEng {
-        background: #198754;
-      }
-
-      #toEng:hover {
-        background: #157347;
+        transform: scale(0.97);
       }
 
       .output-group {
-        margin-top: 20px;
-      }
-
-      .output-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
+        margin-top: 16px;
       }
 
       .output-label {
-        font-size: 13px;
-        color: #6c757d;
+        font-size: 12px;
+        color: #86868b;
         font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      #output {
+        background: #fafafa;
+        border: 1px solid #e5e5e7;
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 60px;
+        max-height: 100px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        font-size: 14px;
+        color: #1d1d1f;
+        transition: all 0.2s ease;
+      }
+
+      #output:not(:empty) {
+        background: #fff;
+        border-color: #0071e3;
+      }
+
+      #output:empty::before {
+        content: "변환 결과가 여기에 표시됩니다";
+        color: #aeaeb2;
+      }
+
+      #output::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      #output::-webkit-scrollbar-thumb {
+        background: #d1d1d6;
+        border-radius: 4px;
       }
 
       .copy-button {
         display: none;
-        margin-top: 8px;
         width: 100%;
-        text-align: center;
-        padding: 12px 0;
-        border: none;
-        border-radius: 8px;
-        background: #212529;
+        margin-top: 10px;
+        padding: 12px;
+        background: #0071e3;
         color: white;
-        font-size: 14px;
-        cursor: pointer;
-        transition: all 0.2s ease;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .copy-button.visible {
+        display: block;
       }
 
       .copy-button:hover {
-        background: #343a40;
-      }
-
-      .copy-button:active {
-        transform: scale(0.95);
+        background: #0077ed;
       }
 
       .copy-button.copied {
-        background: #198754;
-        border-color: #198754;
-      }
-
-      #output {
-        background: #f8f9fa;
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        padding: 14px;
-        min-height: 60px;
-        white-space: pre-wrap;
-        font-size: 14px;
-        color: #212529;
-        max-height: 120px;
-        overflow-y: auto;
-      }
-
-      #output:not(:empty) {
-        background: #ffffff;
-        border-color: #adb5bd;
-      }
-
-      #output:empty::before {
-        content: "변환된 텍스트가 여기에 나타납니다";
-        color: #adb5bd;
-      }
-
-      #output::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      #output::-webkit-scrollbar-track {
-        background: #f8f9fa;
-        border-radius: 10px;
-      }
-
-      #output::-webkit-scrollbar-thumb {
-        background: #dee2e6;
-        border-radius: 10px;
-      }
-
-      #output::-webkit-scrollbar-thumb:hover {
-        background: #ced4da;
-      }
-
-      @media (max-width: 360px) {
-        body {
-          width: 280px;
-          padding: 16px;
-        }
-
-        .container {
-          padding: 20px;
-        }
-
-        button {
-          font-size: 13px;
-          padding: 10px 14px;
-        }
+        background: #34c759;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h3>🔄 영어-한글 변환기</h3>
-
-      <div class="input-group">
-        <textarea
-          id="input"
-          placeholder="잘못 입력된 텍스트를 붙여넣으세요"
-        ></textarea>
+      <div class="header">
+        <h3>영어-한글 변환기</h3>
+        <p>잘못 입력된 텍스트를 변환하세요</p>
       </div>
 
+      <textarea id="input" placeholder="텍스트를 입력하세요"></textarea>
+
       <div class="button-group">
-        <button id="toKor">🇰🇷 영 → 한</button>
-        <button id="toEng">🇺🇸 한 → 영</button>
+        <button class="btn-convert" id="toKor">
+          영 → 한
+          <span>English to Korean</span>
+        </button>
+        <button class="btn-toggle" id="toggle">⇄</button>
+        <button class="btn-convert" id="toEng">
+          한 → 영
+          <span>Korean to English</span>
+        </button>
       </div>
 
       <div class="output-group">
-        <div class="output-header">
-          <div class="output-label">변환 결과</div>
-        </div>
+        <div class="output-label">변환 결과</div>
         <div id="output"></div>
-        <button class="copy-button" id="copyBtn">📋 복사</button>
+        <button class="copy-button" id="copyBtn">복사하기</button>
       </div>
     </div>
-
     <script src="hangul_map.js"></script>
     <script src="popup.js"></script>
-    <script>
-      const copyBtn = document.getElementById("copyBtn");
-      const output = document.getElementById("output");
-
-      const observer = new MutationObserver(() => {
-        if (output.textContent.trim()) {
-          copyBtn.classList.add("visible");
-        } else {
-          copyBtn.classList.remove("visible");
-        }
-      });
-
-      observer.observe(output, {
-        childList: true,
-        subtree: true,
-        characterData: true,
-      });
-
-      copyBtn.addEventListener("click", async () => {
-        const text = output.textContent.trim();
-        if (!text) return;
-
-        try {
-          await navigator.clipboard.writeText(text);
-          copyBtn.textContent = "✅ 복사됨";
-          copyBtn.classList.add("copied");
-
-          setTimeout(() => {
-            copyBtn.textContent = "📋 복사";
-            copyBtn.classList.remove("copied");
-          }, 1500);
-        } catch (err) {
-          const textArea = document.createElement("textarea");
-          textArea.value = text;
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textArea);
-
-          copyBtn.textContent = "✅ 복사됨";
-          copyBtn.classList.add("copied");
-
-          setTimeout(() => {
-            copyBtn.textContent = "📋 복사";
-            copyBtn.classList.remove("copied");
-          }, 1500);
-        }
-      });
-    </script>
   </body>
 </html>

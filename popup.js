@@ -9,6 +9,14 @@ document.getElementById("toKor").addEventListener("click", () => {
   copyBtn.style.display = output.textContent.trim() ? "block" : "none";
 });
 
+document.getElementById("toggle").addEventListener("click", () => {
+  const input = document.getElementById("input").value.trim();
+  const result = toggleLang(input);
+  output.innerText = result || "(변환 결과 없음)";
+
+  copyBtn.style.display = output.textContent.trim() ? "block" : "none";
+});
+
 document.getElementById("toEng").addEventListener("click", () => {
   const input = document.getElementById("input").value.trim();
   const result = convertKorToEng(input);
