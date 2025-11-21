@@ -39,6 +39,51 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+chrome.commands.onCommand.addListener(async (command) => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab) return;
+
+  const result = await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: getSelectedText,
+  });
+
+  const text = result[0]?.result;
+  if (!text) return;
+
+  let convertedText = "";
+  if (command === "cmd_toggle") {
+    convertedText = toggleLang(text);
+  } else if (command === "cmd_to_kor") {
+    convertedText = convertEngToHangul(text);
+  } else if (command === "cmd_to_eng") {
+    convertedText = convertKorToEng(text);
+  }
+
+  if (convertedText) {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: replaceSelectedText,
+      args: [convertedText],
+    });
+  }
+});
+
+function getSelectedText() {
+  const activeElement = document.activeElement;
+
+  if (
+    activeElement &&
+    (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA")
+  ) {
+    const start = activeElement.selectionStart;
+    const end = activeElement.selectionEnd;
+    return activeElement.value.substring(start, end);
+  } else {
+    return window.getSelection().toString();
+  }
+}
+
 function replaceSelectedText(replacementText) {
   const activeElement = document.activeElement;
 

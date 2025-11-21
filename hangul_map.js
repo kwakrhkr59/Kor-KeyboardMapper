@@ -209,29 +209,6 @@ function combineHangul(jamos) {
   return result;
 }
 
-// Kor -> Eng
-function convertKorToEng(text) {
-  const result = [];
-  for (let ch of text) {
-    const code = ch.charCodeAt(0);
-    if (code >= 0xac00 && code <= 0xd7a3) {
-      const offset = code - 0xac00;
-      const cho = Math.floor(offset / (21 * 28));
-      const jung = Math.floor((offset % (21 * 28)) / 28);
-      const jong = offset % 28;
-
-      result.push(
-        korToEng[CHO[cho]] || "",
-        korToEng[JUNG[jung]] || "",
-        JONG[jong] ? korToEng[JONG[jong]] || "" : ""
-      );
-    } else {
-      result.push(korToEng[ch] || ch);
-    }
-  }
-  return result.join("");
-}
-
 // 영↔한 교차
 function toggleLang(text) {
   let result = "";
@@ -264,6 +241,29 @@ function toggleLang(text) {
   }
 
   return result;
+}
+
+// Kor -> Eng
+function convertKorToEng(text) {
+  const result = [];
+  for (let ch of text) {
+    const code = ch.charCodeAt(0);
+    if (code >= 0xac00 && code <= 0xd7a3) {
+      const offset = code - 0xac00;
+      const cho = Math.floor(offset / (21 * 28));
+      const jung = Math.floor((offset % (21 * 28)) / 28);
+      const jong = offset % 28;
+
+      result.push(
+        korToEng[CHO[cho]] || "",
+        korToEng[JUNG[jung]] || "",
+        JONG[jong] ? korToEng[JONG[jong]] || "" : ""
+      );
+    } else {
+      result.push(korToEng[ch] || ch);
+    }
+  }
+  return result.join("");
 }
 
 // Eng -> Kor

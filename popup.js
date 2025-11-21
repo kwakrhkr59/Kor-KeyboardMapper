@@ -1,17 +1,17 @@
 const output = document.getElementById("output");
 const copyBtn = document.getElementById("copyBtn");
 
-document.getElementById("toKor").addEventListener("click", () => {
+document.getElementById("toggle").addEventListener("click", () => {
   const input = document.getElementById("input").value.trim();
-  const result = convertEngToHangul(input);
+  const result = toggleLang(input);
   output.innerText = result || "(변환 결과 없음)";
 
   copyBtn.style.display = output.textContent.trim() ? "block" : "none";
 });
 
-document.getElementById("toggle").addEventListener("click", () => {
+document.getElementById("toKor").addEventListener("click", () => {
   const input = document.getElementById("input").value.trim();
-  const result = toggleLang(input);
+  const result = convertEngToHangul(input);
   output.innerText = result || "(변환 결과 없음)";
 
   copyBtn.style.display = output.textContent.trim() ? "block" : "none";
